@@ -1,0 +1,275 @@
+/*
+ * PROPRIETARY INFORMATION.  This software is proprietary to
+ * Side Effects Software Inc., and is not to be reproduced,
+ * transmitted, or disclosed in any way without written permission.
+ *
+ * NAME:	UI_Types.h ( UI Library, C++)
+ *
+ * COMMENTS:	Types and forward declarations for UI
+ */
+
+#ifndef __UI_Types__
+#define __UI_Types__
+
+#include <UT/UT_SharedPtr.h>
+
+class UI_IconBase;
+typedef UT_SharedPtr<UI_IconBase> UI_IconRef;
+
+enum UI_AnchorPoint
+{
+    UI_ANCHOR_BELOW,
+    UI_ANCHOR_ABOVE,
+    UI_ANCHOR_LEFT,
+    UI_ANCHOR_RIGHT,
+};
+
+enum UI_LookState			// bitfield
+{
+    UI_STATE_NORMAL		= 0,
+    UI_STATE_SELECTED		= 0x1,
+    UI_STATE_LOCATED		= 0x2,
+    UI_STATE_SELECTED_LOCATED	= 0x3,
+    UI_STATE_DISABLED		= 0x4,
+    UI_STATE_SELECTED_DISABLED	= 0x5,
+    
+    UI_STATE_MAX		= 6 // last item.
+};
+
+enum UI_LookOption
+{
+    UI_RENDER_BACKGROUND 	= 0x0001,
+    UI_RENDER_LOCATES	 	= 0x0002,
+    UI_RENDER_BORDER	 	= 0x0004,
+    UI_RENDER_SHIFTED	 	= 0x0008,
+    UI_RENDER_BORDER_HIGHLIGHT	= 0x0010,
+    UI_RENDER_SELECT_FOREGROUND	= 0x0020,
+    UI_RENDER_LOCATE_FOREGROUND	= 0x0040,
+    UI_RENDER_RAW_FOREGROUND    = 0x0080,  // Ignore contrast with this look.
+    UI_RENDER_TRANSPARENT	= 0x0100,
+    UI_RENDER_GAMMA_CORRECTED   = 0x0200,  // Do gamma correct before render.
+    UI_RENDER_LUT_CORRECTED     = 0x0400,  // Do LUT correct before render.
+    UI_STATIC_LOOK              = 0x1000,  // look is static and should not
+                                           // be modified.
+    UI_RENDER_NO_DISABLE_SHIFT  = 0x2000   // No intensity shift if disabled.
+};
+
+enum UI_LookOrientation
+{
+    UI_ORIENTATION_HORIZONTAL,	    // Gradients should render vertically.
+    UI_ORIENTATION_VERTICAL	    // Gradients should render horizontally.
+};
+
+enum UI_BorderType
+{
+    UI_BORDER_NONE,
+    UI_BORDER_LINE,
+    UI_BORDER_2LINE,
+    UI_BORDER_BEVEL,
+    UI_BORDER_BEVEL_DOWN,
+    UI_BORDER_BEVEL_SELECT,
+    UI_BORDER_GROOVE,
+    UI_BORDER_INDENT,
+    UI_BORDER_UNDERLINE,
+    UI_BORDER_TABDIALOG,
+    UI_BORDER_CIRCLE,
+    UI_BORDER_FEATHER,
+    UI_BORDER_LINE_SELECT,
+    UI_BORDER_DARKLINE,
+    UI_BORDER_LIGHTLINE,
+    UI_BORDER_SEPARATOR,
+    UI_BORDER_MENU,
+    UI_BORDER_HGROOVE,
+    UI_BORDER_VGROOVE,
+    UI_BORDER_BUTTONSTRIP,
+    UI_BORDER_BUTTONSTRIP_FLAT,
+    UI_BORDER_FLAT,
+    UI_BORDER_GRADIENT,
+    UI_BORDER_COLOR_SLIDER,
+    UI_BORDER_ICONONLY,
+    UI_BORDER_BUTTONSTRIP_COLORED,
+    UI_BORDER_BUTTONSTRIP_PRESSED_COLORED,
+};
+
+enum
+{
+    UI_ACCENT_NONE	    = 0x00,
+    UI_ACCENT_NOTATDEFVALUE = 0x01,
+    UI_ACCENT_RMBMENU	    = 0x02,
+    UI_ACCENT_DOWNMENU	    = 0x04
+};
+typedef unsigned char UI_LookAccent;
+
+enum UI_Roundness
+{
+    UI_ROUND_NONE	= 0x00,
+    UI_ROUND_LL		= 0x01,
+    UI_ROUND_UL		= 0x02,
+    UI_ROUND_LR		= 0x04,
+    UI_ROUND_UR		= 0x08,
+    UI_ROUND_DOWN	= (UI_ROUND_LL|UI_ROUND_LR),
+    UI_ROUND_UP		= (UI_ROUND_UL|UI_ROUND_UR),
+    UI_ROUND_LEFT	= (UI_ROUND_LL|UI_ROUND_UL),
+    UI_ROUND_RIGHT	= (UI_ROUND_LR|UI_ROUND_UR),
+    UI_ROUND_ALL	= (UI_ROUND_LL|UI_ROUND_UL|UI_ROUND_LR|UI_ROUND_UR)
+};
+
+// Whether an icon can be rendered quickly at multiple sizes. If you use
+// UI_ICON_FIXED (the default), icons can still be rendered at multiple sizes,
+// but it might take a lot longer to do so. UI_ICON_SCALABLE avoids this time
+// penalty, but produces lower-quality (mipmapped) output.
+enum UI_IconScalability
+{
+    UI_ICON_FIXED,
+    UI_ICON_SCALABLE,
+    UI_ICON_SCALABLE_LARGE,
+    UI_ICON_SCALES_COUNT
+};
+
+enum
+{
+    UI_JUST_TOP	    = 0x01,
+    UI_JUST_BOTTOM  = 0x02,
+    UI_JUST_LEFT    = 0x04,
+    UI_JUST_RIGHT   = 0x08
+};
+
+enum UI_Justification
+{
+    UI_JUST_CENTER		= 0,
+    UI_JUST_LEFT_CENTER		= UI_JUST_LEFT,
+    UI_JUST_RIGHT_CENTER	= UI_JUST_RIGHT,
+    UI_JUST_CENTER_TOP		= UI_JUST_TOP,
+    UI_JUST_CENTER_BOTTOM	= UI_JUST_BOTTOM,
+    UI_JUST_LEFT_TOP		= UI_JUST_LEFT	| UI_JUST_TOP,
+    UI_JUST_RIGHT_TOP		= UI_JUST_RIGHT	| UI_JUST_TOP,
+    UI_JUST_LEFT_BOTTOM		= UI_JUST_LEFT	| UI_JUST_BOTTOM,
+    UI_JUST_RIGHT_BOTTOM	= UI_JUST_RIGHT	| UI_JUST_BOTTOM
+};
+
+enum UI_LookType {
+    UI_LOOK_NO_LOOK,
+    UI_LOOK_MENU,
+    UI_LOOK_SEPARATOR_MENU_ITEM,
+    UI_LOOK_INDENT,
+    UI_LOOK_BACKGROUND,
+    UI_LOOK_FEATHERED,
+    UI_LOOK_OUTLINED,
+    UI_LOOK_UNDERLINED,
+    UI_LOOK_CIRCLED,
+    UI_LOOK_2LINE,
+    UI_LOOK_LIGHTLINE,
+    UI_LOOK_PAPER,
+    UI_LOOK_PAPERLINE,
+    UI_LOOK_STEP_UP,
+    UI_LOOK_STEP_DOWN,
+    UI_LOOK_STEP_LEFT,
+    UI_LOOK_STEP_RIGHT,
+    UI_LOOK_LIST,
+    UI_LOOK_LIST_NO_MARGIN,
+    UI_LOOK_LIST_TITLE,
+    UI_LOOK_LIST_ENTRY1,
+    UI_LOOK_LIST_ENTRY2,
+    UI_LOOK_LIST_MULTISEL_ENTRY,
+    UI_LOOK_LIST_CHECK_ENTRY,
+    UI_LOOK_RED_RAMP,
+    UI_LOOK_GREEN_RAMP,
+    UI_LOOK_BLUE_RAMP,
+    UI_LOOK_BEVEL_UP,
+    UI_LOOK_BEVEL2_UP,
+    UI_LOOK_BEVEL_DOWN,
+    UI_LOOK_SEPARATOR,
+    UI_LOOK_BORDER,
+    UI_LOOK_HGROOVE,
+    UI_LOOK_VGROOVE,
+    UI_LOOK_SPLITBAR,
+    UI_LOOK_FOLDER_ARROW,
+    UI_LOOK_FOLDER_END,
+    UI_LOOK_TABDIALOG,
+    UI_LOOK_DARKLINE,
+    UI_LOOK_BUMPYTAB,
+    UI_LOOK_FEATHER_LEFT,
+    UI_LOOK_FEATHER_RIGHT,
+    UI_LOOK_SCROLLBAR_LEFT_BUTTON,
+    UI_LOOK_SCROLLBAR_RIGHT_BUTTON,
+    UI_LOOK_SCROLLBAR_UP_BUTTON,
+    UI_LOOK_SCROLLBAR_DOWN_BUTTON,
+    UI_LOOK_SCROLLBAR_LEFT_BUTTON_SMALL,
+    UI_LOOK_SCROLLBAR_RIGHT_BUTTON_SMALL,
+    UI_LOOK_SCROLLBAR_UP_BUTTON_SMALL,
+    UI_LOOK_SCROLLBAR_DOWN_BUTTON_SMALL,
+    UI_LOOK_SHELF,
+
+//
+//  All looks from this point onward are dynamically allocated on each call
+//  to UIgetLook and should be deleted by the caller. The ones above this
+//  point are shared and should *not* be deleted.
+//
+//  Use the function "UIisSharedLook(UI_LookType)" to check if it's shared.
+//
+    UI_LOOK_SLIDER,
+    UI_LOOK_SLIDER_THUMB,
+
+    UI_LOOK_SCROLLBAR,
+    UI_LOOK_SCROLLBAR_THUMB,
+
+    UI_LOOK_ACTION_BUTTON,
+    UI_LOOK_MENU_BUTTON,
+    UI_LOOK_MENU_ICONBUTTON,
+    UI_LOOK_ACTION_MENU_ITEM,
+    UI_LOOK_ACTION_ICON_MENU_ITEM,
+    UI_LOOK_ACTION_CUSTOM_DRAW_MENU_ITEM,
+    UI_LOOK_TOGGLE_MENU_ITEM,
+    UI_LOOK_RADIO_MENU_ITEM,
+    UI_LOOK_PARENT_MENU_ITEM,
+    UI_LOOK_TITLE_MENU_ITEM,
+    UI_LOOK_THICK_TITLE_MENU_ITEM,
+    UI_LOOK_MENUBAR_ITEM,
+    UI_LOOK_MENUBAR,
+    UI_LOOK_SHELF_TAB,
+    UI_LOOK_PANE_TAB,
+
+    UI_LOOK_INPUT_FIELD,
+    UI_LOOK_HUE_RAMP,
+    UI_LOOK_VAL_RAMP,
+    UI_LOOK_SAT_RAMP,
+    UI_LOOK_COLOR_BUTTON,
+    UI_LOOK_COLOR_FLAT_BUTTON,
+    UI_LOOK_PULLDOWN_BUTTON,
+    UI_LOOK_JUMPUP_BUTTON,
+    UI_LOOK_ENTER_BUTTON,
+    UI_LOOK_PUSH_BUTTON,
+    UI_LOOK_RADIO_BUTTON,
+    UI_LOOK_CHECK_BUTTON,
+    UI_LOOK_FOLDER_BUTTON,
+    UI_LOOK_FOLDER_RADIO,
+    UI_LOOK_FLOATER_BUTTON,
+    UI_LOOK_LOCATING_BUTTON,
+    UI_LOOK_INPUT_FLOATER,
+    UI_LOOK_OUTLINE_TEXT,
+    UI_LOOK_UNDERLINE_TEXT,
+    UI_LOOK_HEADING_TEXT,
+    UI_LOOK_CIRCLED_TEXT,
+    UI_LOOK_BACKGROUND_TEXT,
+    UI_LOOK_PAPER_TEXT,
+    UI_LOOK_PAPERLINE_TEXT,
+    UI_LOOK_TEXT_ONLY,
+    UI_LOOK_LIGHT_TEXT_ONLY,
+    UI_LOOK_LIGHT_TEXT_LINE,
+    UI_LOOK_TEXT_FINE_PRINT,
+    UI_LOOK_HUE_CIRCLE,
+    UI_LOOK_SYMBOL,
+    UI_LOOK_STOWBAR_FLAT,
+    UI_LOOK_STOWBAR_MENU,
+    UI_LOOK_TEXT_BOLD,
+    UI_LOOK_TITLE_TEXT,
+
+    UI_LOOK_UNSHARED_LIST_ENTRY1,
+    UI_LOOK_UNSHARED_LIST_ENTRY2,
+
+
+    UI_LOOK_TEMPERATURE_RAMP,
+    UI_LOOK_MAGENTA_RAMP,
+};
+
+#endif // __UI_Types__

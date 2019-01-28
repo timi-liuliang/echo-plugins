@@ -1,0 +1,15 @@
+
+#ifndef __SYS_API_h__
+#define __SYS_API_h__
+
+#include "SYS_Visibility.h"
+
+#ifdef SYS_EXPORTS
+#define SYS_API SYS_VISIBILITY_EXPORT
+#define SYS_API_TINST SYS_VISIBILITY_EXPORT_TINST
+#else
+#define SYS_API SYS_VISIBILITY_IMPORT
+#define SYS_API_TINST SYS_VISIBILITY_IMPORT_TINST
+#endif
+
+#endif

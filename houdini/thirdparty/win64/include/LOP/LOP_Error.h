@@ -1,0 +1,51 @@
+/*
+ * PROPRIETARY INFORMATION.  This software is proprietary to
+ * Side Effects Software Inc., and is not to be reproduced,
+ * transmitted, or disclosed in any way without written permission.
+ *
+ * NAME:	LOP_Error.h
+ *
+ * COMMENTS:
+ *		This enum defines LOP errors or warnings.
+ *
+*/
+
+#ifndef __LOP_Error__
+#define __LOP_Error__
+
+enum LOP_ErrorCodes
+{
+    LOP_MESSAGE = 0,
+    LOP_MISSING_REQUIRED_INPUT = 1,
+    LOP_BAD_INPUT_DATA = 2,
+    LOP_NODE_NOT_FOUND = 3,
+    LOP_NO_DISPLAY_NODE = 4,
+    LOP_FAILED_TO_COOK = 5,
+    LOP_FAILED_TO_LOAD_FILE = 6,
+    LOP_PRIM_NOT_FOUND = 7,
+    LOP_PRIM_NOT_CREATED = 8,
+    LOP_VARIANT_SET_NOT_FOUND = 9,
+    LOP_VARIANT_NAME_NOT_FOUND = 10,
+    LOP_VARIANT_NOT_CREATED = 11,
+    LOP_FAILED_TO_SET_ATTRIBUTE = 12,
+    LOP_COLLECTION_NOT_CREATED = 13,
+    LOP_COLLECTION_FAILED_TO_CALCULATE = 14,
+    LOP_BAD_INPUT_NAME_EXPRESSION = 15,
+    LOP_MERGE_FAILED = 16,
+    LOP_CREATE_VARIANT_FAILED = 17,
+    LOP_NO_VARIANT_SET_NAME = 18,
+    LOP_NO_VARIANT_PRIM_PATH = 19,
+    LOP_ONLY_INSTANCE_XFORMS = 20,
+    LOP_FAILED_TO_SET_SAVE_PATH = 21,
+    LOP_FAILED_TO_ADD_LAYER = 22,
+    LOP_FAILED_TO_ADD_REFERENCE = 23,
+    LOP_FAILED_TO_BIND_MATERIAL = 24,
+    LOP_TIMEDEP_ANIMATED_STAGE = 25,
+    LOP_COLLECTION_TIMEDEP_ANIMATED_STAGE = 26,
+    LOP_HOUDINI_CUSTOM_DATA_NOT_ALLOWED = 27,
+    LOP_BLEND_FAILED = 28,
+
+    LOP_NUM_ERROR_CODES
+};
+
+#endif
