@@ -1,11 +1,11 @@
 #include "DllMain.h"
 
-bool loadHoudiniPlugin()
+bool loadEmptyPlugin()
 {
 	return true;
 }
 
-bool unloadHoudiniPlugin()
+bool unloadEmptyPlugin()
 {
 	return false;
 }

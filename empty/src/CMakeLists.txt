@@ -1,5 +1,5 @@
 # Set Module Name
-SET(MODULE_NAME EmptyPlugin)
+SET(MODULE_NAME Empty)
 
 MESSAGE( STATUS "Configuring module: ${MODULE_NAME} ...")
 

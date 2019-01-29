@@ -5,8 +5,8 @@
 extern "C"
 {
 	// load houdini plugin
-	bool ECHO_PLUGIN_EXPORT loadHoudiniPlugin();
+	bool ECHO_PLUGIN_EXPORT loadEmptyPlugin();
 
 	// unload houdini plugin
-	bool ECHO_PLUGIN_EXPORT unloadHoudiniPlugin();
+	bool ECHO_PLUGIN_EXPORT unloadEmptyPlugin();
 }
