@@ -1,12 +1,11 @@
-namespace Echo
+#include "DllMain.h"
+
+bool loadHoudiniPlugin()
 {
-	void loadHoudiniPlugin()
-	{
+	return false;
+}
 
-	}
-
-	void unloadHoudiniPlugin()
-	{
-
-	}
+bool unloadHoudiniPlugin()
+{
+	return false;
 }
