@@ -1,6 +1,10 @@
 #pragma once
 
-#define ECHO_PLUGIN_EXPORT __declspec(dllexport)
+#ifdef WIN32
+    #define ECHO_PLUGIN_EXPORT __declspec(dllexport)
+#else
+    #define ECHO_PLUGIN_EXPORT __attribute__((visibility("default")))
+#endif
 
 extern "C"
 {
