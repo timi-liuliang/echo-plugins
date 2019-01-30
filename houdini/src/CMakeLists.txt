@@ -1,5 +1,5 @@
 # Set Module Name
-SET(MODULE_NAME houdini)
+SET(MODULE_NAME Houdini)
 
 MESSAGE( STATUS "Configuring module: ${MODULE_NAME} ...")
 
