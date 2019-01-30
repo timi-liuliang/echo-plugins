@@ -3,27 +3,27 @@ SET(MODULE_NAME houdini)
 
 MESSAGE( STATUS "Configuring module: ${MODULE_NAME} ...")
 
-# 包含目录
+# include diirectories
 INCLUDE_DIRECTORIES( ${BIG_NUMBER_ROOT_PATH})
 INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR})
 INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/win64/include)
 
-# 链接库目录
+# link directories
 LINK_DIRECTORIES(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
-# 包含文件
+# query all files
 FILE( GLOB_RECURSE HEADER_FILES *.h *.inl)
 FILE( GLOB_RECURSE SOURCE_FILES *.c *.cpp *.mm)
 
 SET(ALL_FILES ${HEADER_FILES} ${SOURCE_FILES})
 
-# 分组
+# group
 GROUP_FILES(ALL_FILES ${CMAKE_CURRENT_SOURCE_DIR})
 
-# 生成库
+# add library
 ADD_LIBRARY(${MODULE_NAME} SHARED ${ALL_FILES})
 
-# 设置目录
+# set target properties
 SET_TARGET_PROPERTIES(${MODULE_NAME} PROPERTIES FOLDER "")
 
 # Link libraries
