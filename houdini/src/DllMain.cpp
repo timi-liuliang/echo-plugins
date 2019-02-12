@@ -1,8 +1,13 @@
 #include "DllMain.h"
+#include "houdini_module.h"
+
+using namespace Echo;
 
 bool loadHoudiniPlugin()
 {
-	return false;
+    REGISTER_MODULE(HoudiniModule)
+    
+	return true;
 }
 
 bool unloadHoudiniPlugin()
