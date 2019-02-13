@@ -14,6 +14,9 @@ LINK_DIRECTORIES(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 IF(${ECHO_BUILD_PLATFORM_MAC})
     LINK_DIRECTORIES(${ECHO_ROOT_PATH}/lib/OSX/${CMAKE_BUILD_TYPE})
     LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty/live2d/Cubism31SdkNative-EAP5/Core/lib/macos)
+ELSE()
+	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/lib/Win64/${CMAKE_BUILD_TYPE})
+	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty/live2d/Cubism31SdkNative-EAP5/Core/lib/windows/x86_64)
 ENDIF()
 
 # query all files
@@ -40,7 +43,7 @@ TARGET_LINK_LIBRARIES(${MODULE_NAME} Live2DCubismCore pugixml spine box2d)
 #    TARGET_LINK_LIBRARIES(${MODULE_NAME} debug libEGL_d.lib optimized libEGL.lib)
 #    TARGET_LINK_LIBRARIES(${MODULE_NAME} debug libGLESv2_d.lib optimized libGLESv2.lib dbghelp.lib Psapi.lib)
 #    TARGET_LINK_LIBRARIES(${MODULE_NAME} OpenAL32.lib)
-#F(ECHO_BUILD_PLATFORM_MAC)
+IF(ECHO_BUILD_PLATFORM_MAC)
     # AddFrameWork Macro
     MACRO(ADD_FRAMEWORK fwname)
         SET(FRAMEWORKS "${FRAMEWORKS} -framework ${fwname}")
@@ -53,7 +56,9 @@ TARGET_LINK_LIBRARIES(${MODULE_NAME} Live2DCubismCore pugixml spine box2d)
 
     SET(FRAMEWORKS "${FRAMEWORKS} -ObjC")
     SET(CMAKE_SHARED_LINKER_FLAGS ${FRAMEWORKS})
-#ENDIF()
+ELSE()
+	#TARGET_LINK_LIBRARIES(${MODULE_NAME} )
+ENDIF()
 
 # succeed message
 MESSAGE(STATUS "Configure ${MODULE_NAME} success!")
