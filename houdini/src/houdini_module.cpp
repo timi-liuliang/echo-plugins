@@ -2,6 +2,11 @@
 
 namespace Echo
 {
+	void registerModules()
+	{
+		REGISTER_MODULE(HoudiniModule)
+	}
+
     HoudiniModule::HoudiniModule()
     {
         

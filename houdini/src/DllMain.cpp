@@ -5,8 +5,8 @@ using namespace Echo;
 
 bool loadHoudiniPlugin()
 {
-    REGISTER_MODULE(HoudiniModule)
-    
+	registerModules();
+
 	return true;
 }
 

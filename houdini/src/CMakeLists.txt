@@ -17,7 +17,6 @@ IF(${ECHO_BUILD_PLATFORM_MAC})
 ELSE()
 	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/lib/Win64/${CMAKE_BUILD_TYPE})
 	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty/live2d/Cubism31SdkNative-EAP5/Core/lib/windows/x86_64)
-	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty/openal-1.1/windows/libs/Win64)
 	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty//AdrenoSDK/Lib/x64)
 ENDIF()
 
@@ -37,14 +36,8 @@ ADD_LIBRARY(${MODULE_NAME} SHARED ${ALL_FILES})
 SET_TARGET_PROPERTIES(${MODULE_NAME} PROPERTIES FOLDER "")
 
 # Link libraries
-TARGET_LINK_LIBRARIES(${MODULE_NAME} zlib engine lua recast freeimage physx)
-TARGET_LINK_LIBRARIES(${MODULE_NAME} Live2DCubismCore pugixml spine box2d)
+TARGET_LINK_LIBRARIES(${MODULE_NAME} zlib engine lua freeimage)
 
-#IF(${ECHO_PLATFORM_WIN32})
-#    TARGET_LINK_LIBRARIES(${MODULE_NAME} 7zip winmm.lib imm32.lib dxgi.lib Shlwapi.lib)
-#    TARGET_LINK_LIBRARIES(${MODULE_NAME} debug libEGL_d.lib optimized libEGL.lib)
-#    TARGET_LINK_LIBRARIES(${MODULE_NAME} debug libGLESv2_d.lib optimized libGLESv2.lib dbghelp.lib Psapi.lib)
-#    TARGET_LINK_LIBRARIES(${MODULE_NAME} OpenAL32.lib)
 IF(ECHO_BUILD_PLATFORM_MAC)
     # AddFrameWork Macro
     MACRO(ADD_FRAMEWORK fwname)
@@ -54,7 +47,6 @@ IF(ECHO_BUILD_PLATFORM_MAC)
     ADD_FRAMEWORK(AppKit)
     ADD_FRAMEWORK(QuartzCore)
     ADD_FRAMEWORK(Metal)
-    ADD_FRAMEWORK(OpenAL)
 
     SET(FRAMEWORKS "${FRAMEWORKS} -ObjC")
     SET(CMAKE_SHARED_LINKER_FLAGS ${FRAMEWORKS})
@@ -62,7 +54,6 @@ ELSE()
 	TARGET_LINK_LIBRARIES(${MODULE_NAME} winmm.lib imm32.lib dxgi.lib Shlwapi.lib)
 	TARGET_LINK_LIBRARIES(${MODULE_NAME} debug libEGL_d.lib optimized libEGL.lib)
 	TARGET_LINK_LIBRARIES(${MODULE_NAME} debug libGLESv2_d.lib optimized libGLESv2.lib dbghelp.lib Psapi.lib)
-	TARGET_LINK_LIBRARIES(${MODULE_NAME} OpenAL32.lib)
 ENDIF()
 
 # succeed message
