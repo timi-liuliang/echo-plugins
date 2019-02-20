@@ -17,6 +17,8 @@ IF(${ECHO_BUILD_PLATFORM_MAC})
 ELSE()
 	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/lib/Win64/${CMAKE_BUILD_TYPE})
 	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty/live2d/Cubism31SdkNative-EAP5/Core/lib/windows/x86_64)
+	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty/openal-1.1/windows/libs/Win64)
+	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty//AdrenoSDK/Lib/x64)
 ENDIF()
 
 # query all files
@@ -57,7 +59,10 @@ IF(ECHO_BUILD_PLATFORM_MAC)
     SET(FRAMEWORKS "${FRAMEWORKS} -ObjC")
     SET(CMAKE_SHARED_LINKER_FLAGS ${FRAMEWORKS})
 ELSE()
-	#TARGET_LINK_LIBRARIES(${MODULE_NAME} )
+	TARGET_LINK_LIBRARIES(${MODULE_NAME} winmm.lib imm32.lib dxgi.lib Shlwapi.lib)
+	TARGET_LINK_LIBRARIES(${MODULE_NAME} debug libEGL_d.lib optimized libEGL.lib)
+	TARGET_LINK_LIBRARIES(${MODULE_NAME} debug libGLESv2_d.lib optimized libGLESv2.lib dbghelp.lib Psapi.lib)
+	TARGET_LINK_LIBRARIES(${MODULE_NAME} OpenAL32.lib)
 ENDIF()
 
 # succeed message
