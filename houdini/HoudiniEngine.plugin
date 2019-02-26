@@ -1,15 +1,17 @@
 {
 	"Version" : 1,
 	"Name" : "HoudiniEngine",
-	"Directorys" : 
+	"Library" : 
 	[
-		{
-			"OS" : "Windows",
-			"Paths" : "bin;C:/Program Files/Side Effects Software/Houdini 17.0.352/bin"
-		},
-		{
-			"OS" : "Mac",
-			"Paths" : "bin;C:/Program Files/Side Effects Software/Houdini 17.0.352/bin"
-		}
+    {
+      "OS": "Windows",
+      "Path": "bin",
+      "DependLibraryPaths": "C:/Program Files/Side Effects Software/Houdini 17.0.352/bin"
+    },
+    {
+      "OS": "Mac",
+      "Path": "bin",
+      "DependLibraryPaths": "C:/Program Files/Side Effects Software/Houdini 17.0.352/bin"
+    }
 	]
 }
