@@ -14,5 +14,8 @@ namespace Echo
         
         // update box2d world
         virtual void update(float elapsedTime) override;
+
+	private:
+		class HoudninApi*	m_houdiniApi = nullptr;
     };
 }

@@ -1,5 +1,5 @@
 #include "DllMain.h"
-#include "houdini_module.h"
+#include "HoudiniModule.h"
 
 using namespace Echo;
 
