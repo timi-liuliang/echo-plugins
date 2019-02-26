@@ -1,0 +1,15 @@
+{
+	"Version" : 1,
+	"Name" : "HoudiniEngine",
+	"Directorys" : 
+	[
+		{
+			"OS" : "Windows",
+			"Paths" : "bin;C:/Program Files/Side Effects Software/Houdini 17.0.352/bin"
+		},
+		{
+			"OS" : "Mac",
+			"Paths" : "bin;C:/Program Files/Side Effects Software/Houdini 17.0.352/bin"
+		}
+	]
+}
