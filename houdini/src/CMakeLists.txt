@@ -1,24 +1,24 @@
 # Set Module Name
-SET(MODULE_NAME Houdini)
+SET(MODULE_NAME HoudiniEngine)
 
 MESSAGE( STATUS "Configuring module: ${MODULE_NAME} ...")
 
 # include diirectories
 INCLUDE_DIRECTORIES( ${BIG_NUMBER_ROOT_PATH})
 INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR})
-INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/win64/include)
 INCLUDE_DIRECTORIES( ${ECHO_ROOT_PATH})
 
 # link directories
 LINK_DIRECTORIES(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 IF(${ECHO_BUILD_PLATFORM_MAC})
     LINK_DIRECTORIES(${ECHO_ROOT_PATH}/lib/OSX/${CMAKE_BUILD_TYPE})
-    LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty/live2d/Cubism31SdkNative-EAP5/Core/lib/macos)
 ELSE()
 	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/lib/Win64/${CMAKE_BUILD_TYPE})
-	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty/live2d/Cubism31SdkNative-EAP5/Core/lib/windows/x86_64)
 	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty/opengles/mali/lib/win64)
 ENDIF()
+
+# Locate Houdini's libraries and header files.
+FIND_PACKAGE(Houdini REQUIRED)
 
 # query all files
 FILE( GLOB_RECURSE HEADER_FILES *.h *.inl)
@@ -37,6 +37,7 @@ SET_TARGET_PROPERTIES(${MODULE_NAME} PROPERTIES FOLDER "")
 
 # Link libraries
 TARGET_LINK_LIBRARIES(${MODULE_NAME} zlib engine lua freeimage)
+TARGET_LINK_LIBRARIES(${MODULE_NAME} Houdini)
 
 IF(ECHO_BUILD_PLATFORM_MAC)
     # AddFrameWork Macro

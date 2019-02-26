@@ -1,16 +1,19 @@
 #include "DllMain.h"
 #include "HoudiniModule.h"
+#include "Test/GeoisoSurface.h"
 
 using namespace Echo;
 
-bool loadHoudiniPlugin()
+bool loadHoudiniEnginePlugin()
 {
+	geoisoSurfaceTest();
+
 	registerModules();
 
 	return true;
 }
 
-bool unloadHoudiniPlugin()
+bool unloadHoudiniEnginePlugin()
 {
 	return false;
 }
