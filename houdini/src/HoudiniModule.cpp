@@ -1,5 +1,4 @@
 #include "HoudiniModule.h"
-#include "Api/HoudiniApi.h"
 #include "engine/core/memory/MemAllocDef.h"
 
 namespace Echo
@@ -11,8 +10,6 @@ namespace Echo
 
     HoudiniModule::HoudiniModule()
     {
-		//m_houdiniApi = EchoNew(HoudninApi);
-		//m_houdiniApi->initialize();
     }
     
     void HoudiniModule::registerTypes()
