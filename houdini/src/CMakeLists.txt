@@ -14,7 +14,6 @@ IF(${ECHO_BUILD_PLATFORM_MAC})
     LINK_DIRECTORIES(${ECHO_ROOT_PATH}/lib/OSX/${CMAKE_BUILD_TYPE})
 ELSE()
 	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/lib/Win64/${CMAKE_BUILD_TYPE})
-	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/thirdparty/opengles/mali/lib/win64)
 ENDIF()
 
 # Locate Houdini's libraries and header files.
@@ -47,14 +46,10 @@ IF(ECHO_BUILD_PLATFORM_MAC)
 
     ADD_FRAMEWORK(AppKit)
     ADD_FRAMEWORK(QuartzCore)
-    ADD_FRAMEWORK(Metal)
 
     SET(FRAMEWORKS "${FRAMEWORKS} -ObjC")
     SET(CMAKE_SHARED_LINKER_FLAGS ${FRAMEWORKS})
 ELSE()
-	TARGET_LINK_LIBRARIES(${MODULE_NAME} winmm.lib imm32.lib dxgi.lib Shlwapi.lib)
-	TARGET_LINK_LIBRARIES(${MODULE_NAME} libEGL.lib)
-	TARGET_LINK_LIBRARIES(${MODULE_NAME} libGLESv2.lib dbghelp.lib Psapi.lib)
 ENDIF()
 
 # succeed message
