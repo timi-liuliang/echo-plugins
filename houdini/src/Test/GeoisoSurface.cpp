@@ -1,5 +1,5 @@
 #include "GeoisoSurface.h"
-#include "GU/GU_Detail.h"
+#include <GU/GU_Detail.h>
 
 namespace Echo
 {
