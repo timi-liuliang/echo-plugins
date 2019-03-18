@@ -5,12 +5,12 @@
 	[
     {
       "OS": "Windows",
-      "Path": "bin",
+      "Path": "${PluginDir}/bin/HoudiniEngine.dll",
       "DependLibraryPaths": "C:/Program Files/Side Effects Software/Houdini 17.0.352/bin"
     },
     {
       "OS": "Mac",
-      "Path": "bin",
+      "Path": "${PluginDir}/bin/HoudiniEngine.dylib",
       "DependLibraryPaths": "C:/Program Files/Side Effects Software/Houdini 17.0.352/bin"
     }
 	]
