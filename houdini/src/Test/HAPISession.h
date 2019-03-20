@@ -51,4 +51,8 @@ namespace Echo
 	//	The Houdini Engine server can also be manually started with a known named pipe.Then, the named pipe information is entered 
 	//  into the plug - in.
 	void startHAPISessionNamedPipe(HAPI_Session& Session);
+
+
+	// close session
+	void closeSession(HAPI_Session& session);
 }

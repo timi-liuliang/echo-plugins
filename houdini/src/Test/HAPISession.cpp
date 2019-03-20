@@ -33,4 +33,9 @@ namespace Echo
 		// Create Session
 		HAPI_CreateThriftNamedPipeSession(&Session, "hapi");
 	}
+
+	void closeSession(HAPI_Session& session)
+	{
+		HAPI_CloseSession(&session);
+	}
 }
